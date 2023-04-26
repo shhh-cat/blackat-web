@@ -1,5 +1,7 @@
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.min.css'
+import Providers from './Providers'
+import * as SignalClient from '../lib/signal/ts'
 
 export const metadata = {
   title: 'Blackat',
@@ -7,9 +9,14 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  return (
+  console.log(SignalClient.IdentityKeyPair.generate())
+  return ( 
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }

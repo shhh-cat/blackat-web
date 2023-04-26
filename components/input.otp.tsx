@@ -2,13 +2,14 @@ import React, { useMemo } from 'react';
 
 const RE_DIGIT = new RegExp(/^\d+$/);
 
-export type Props = {
-  value: string;
-  valueLength: number;
-  onChange: (value: string) => void;
+interface Props {
+  value: string
+  valueLength: number
+  onChange: (value: string) => void
+  className: string
 };
 
-export default function OtpInput({ value, valueLength, onChange }: Props) {
+export default function OtpInput({ value, valueLength, onChange, className }: Props) {
   const valueItems = useMemo(() => {
     const valueArray = value.split('');
     const items: Array<string> = [];
@@ -124,7 +125,7 @@ export default function OtpInput({ value, valueLength, onChange }: Props) {
   };
 
   return (
-    <div className="flex gap-2 justify-between">
+    <div className={className + " flex gap-2 justify-between" }>
       {valueItems.map((digit, idx) => (
         <input
           key={idx}
